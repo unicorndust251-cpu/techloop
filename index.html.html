@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,260 +8,258 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0a0a0a;
-            --text: #f5f5f5;
-            --muted: #9c9c9c;
-            --stroke: #222222;
-            --accent-a: #89AACC;
-            --accent-b: #4E85BF;
+            --bg: #0a0a0a; --surface: #111; --text: #f5f5f5;
+            --muted: #9c9c9c; --stroke: #222; --accent-a: #89AACC; --accent-b: #4E85BF;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; line-height: 1.5; color: var(--text); background: var(--bg); overflow-x: hidden; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; }
+        body { font-family:'Inter',sans-serif; line-height:1.5; color:var(--text); background:var(--bg); overflow-x:hidden; }
         body::before {
-            content: ""; position: fixed; inset: 0; pointer-events: none; z-index: -1;
+            content:""; position:fixed; inset:0; pointer-events:none; z-index:-1;
             background: radial-gradient(900px 420px at 8% -10%, rgba(137,170,204,0.18), transparent 60%),
                         radial-gradient(1000px 500px at 92% -10%, rgba(78,133,191,0.14), transparent 62%);
         }
-        .container { width: min(1180px, calc(100% - 36px)); margin: 0 auto; }
-        .accent-gradient { background: linear-gradient(90deg, var(--accent-a) 0%, var(--accent-b) 100%); }
-        .eyebrow { display: inline-flex; align-items: center; gap: 0.55rem; font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
-        .eyebrow::before { content: ""; width: 30px; height: 1px; background: var(--stroke); }
-        .section-title { font-size: clamp(2rem,5vw,3.1rem); line-height: 1.03; margin: 1.1rem 0 1rem; letter-spacing: -0.03em; color: var(--text); }
-        .section-subtitle { color: var(--muted); max-width: 640px; font-size: 1.02rem; }
-        .section-head { margin-bottom: 2.35rem; }
-        .section-head.center { text-align: center; }
-        .section-head.center .eyebrow { justify-content: center; }
+        .page { min-height:100vh; }
+        .container { width:min(1180px, calc(100% - 36px)); margin:0 auto; }
+        .accent-gradient { background:linear-gradient(90deg,var(--accent-a),var(--accent-b)); }
+        .eyebrow { display:inline-flex; align-items:center; gap:.55rem; font-size:.72rem; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); }
+        .eyebrow::before { content:""; width:30px; height:1px; background:var(--stroke); }
+        .section-title { font-size:clamp(2rem,5vw,3.1rem); line-height:1.03; margin:1.1rem 0 1rem; letter-spacing:-.03em; }
+        .section-subtitle { color:var(--muted); max-width:640px; font-size:1.02rem; }
+        .section-head { margin-bottom:2.35rem; }
+        .section-head.center { text-align:center; }
+        .section-head.center .eyebrow { justify-content:center; }
 
         /* NAV */
-        header { position: fixed; inset: 0 0 auto 0; z-index: 1100; padding-top: 0.95rem; pointer-events: none; }
-        nav {
-            pointer-events: auto; width: fit-content; margin: 0 auto;
-            display: flex; align-items: center; gap: 0.45rem; padding: 0.45rem;
-            border-radius: 999px; border: 1px solid rgba(255,255,255,0.14);
-            background: rgba(17,17,17,0.78); backdrop-filter: blur(12px);
-            transition: box-shadow 0.25s ease, transform 0.25s ease;
-        }
-        nav.scrolled { box-shadow: 0 14px 36px rgba(0,0,0,0.32); transform: translateY(-1px); }
-        .logo { display: inline-flex; align-items: center; gap: 0.52rem; text-decoration: none; color: var(--text); padding: 0.22rem 0.5rem; border-radius: 999px; }
-        .logo-ring { width: 33px; height: 33px; border-radius: 999px; padding: 1.6px; transition: transform 0.22s ease; }
-        .logo:hover .logo-ring { transform: scale(1.06); }
-        .logo-core { width: 100%; height: 100%; border-radius: 999px; background: var(--bg); border: 1px solid rgba(255,255,255,0.14); display: flex; align-items: center; justify-content: center; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; }
-        .logo-label { font-size: 0.84rem; letter-spacing: 0.02em; color: #e8e8e8; font-weight: 600; }
-        .nav-links { list-style: none; display: flex; align-items: center; gap: 0.26rem; }
-        .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.8rem; font-weight: 500; padding: 0.5rem 0.86rem; border-radius: 999px; transition: color 0.2s ease, background 0.2s ease; }
-        .nav-links a:hover, .nav-links a.active { color: var(--text); background: rgba(255,255,255,0.08); }
-        .cta-link { color: var(--text); text-decoration: none; font-size: 0.8rem; font-weight: 600; padding: 0.5rem 0.86rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.16); transition: border-color 0.22s ease, transform 0.22s ease; cursor: pointer; background: none; }
-        .cta-link:hover { border-color: var(--accent-a); transform: translateY(-1px); }
+        .home-header { position:fixed; inset:0 0 auto 0; z-index:1100; padding-top:.95rem; pointer-events:none; }
+        nav { pointer-events:auto; width:fit-content; margin:0 auto; display:flex; align-items:center; gap:.45rem; padding:.45rem; border-radius:999px; border:1px solid rgba(255,255,255,0.14); background:rgba(17,17,17,0.78); backdrop-filter:blur(12px); transition:box-shadow .25s,transform .25s; }
+        nav.scrolled { box-shadow:0 14px 36px rgba(0,0,0,.32); transform:translateY(-1px); }
+        .logo { display:inline-flex; align-items:center; gap:.52rem; text-decoration:none; color:var(--text); padding:.22rem .5rem; border-radius:999px; cursor:pointer; background:none; border:none; font:inherit; }
+        .logo-ring { width:33px; height:33px; border-radius:999px; padding:1.6px; transition:transform .22s; }
+        .logo:hover .logo-ring { transform:scale(1.06); }
+        .logo-core { width:100%; height:100%; border-radius:999px; background:var(--bg); border:1px solid rgba(255,255,255,0.14); display:flex; align-items:center; justify-content:center; font-size:.68rem; font-weight:700; letter-spacing:.06em; }
+        .logo-label { font-size:.84rem; letter-spacing:.02em; color:#e8e8e8; font-weight:600; }
+        .nav-links { list-style:none; display:flex; align-items:center; gap:.26rem; }
+        .nav-links a { color:var(--muted); text-decoration:none; font-size:.8rem; font-weight:500; padding:.5rem .86rem; border-radius:999px; transition:color .2s,background .2s; cursor:pointer; }
+        .nav-links a:hover, .nav-links a.active { color:var(--text); background:rgba(255,255,255,0.08); }
+        .cta-link { color:var(--text); font-size:.8rem; font-weight:600; padding:.5rem .86rem; border-radius:999px; border:1px solid rgba(255,255,255,0.16); transition:border-color .22s,transform .22s; background:none; cursor:pointer; font-family:inherit; }
+        .cta-link:hover { border-color:var(--accent-a); transform:translateY(-1px); }
 
         /* HERO */
-        .hero { min-height: 100vh; display: grid; align-items: center; padding: 9.5rem 0 5rem; position: relative; }
-        .hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 190px; background: linear-gradient(to bottom, transparent, var(--bg)); pointer-events: none; }
-        .hero-inner { text-align: center; max-width: 780px; margin: 0 auto; position: relative; z-index: 1; animation: fade-up 0.9s ease-out both; }
-        .hero h1 { font-size: clamp(2.5rem,7vw,5.4rem); line-height: 0.93; letter-spacing: -0.035em; margin: 1rem 0 1.15rem; }
-        .hero p { color: #b1b1b1; font-size: 1.02rem; max-width: 640px; margin: 0 auto 2rem; }
-        .hero .cta-buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.8rem; }
+        .hero { min-height:100vh; display:grid; align-items:center; padding:9.5rem 0 5rem; position:relative; }
+        .hero::after { content:""; position:absolute; left:0; right:0; bottom:0; height:190px; background:linear-gradient(to bottom,transparent,var(--bg)); pointer-events:none; }
+        .hero-inner { text-align:center; max-width:780px; margin:0 auto; position:relative; z-index:1; animation:fade-up .9s ease-out both; }
+        .hero h1 { font-size:clamp(2.5rem,7vw,5.4rem); line-height:.93; letter-spacing:-.035em; margin:1rem 0 1.15rem; }
+        .hero p { color:#b1b1b1; font-size:1.02rem; max-width:640px; margin:0 auto 2rem; }
+        .hero .cta-buttons { display:flex; justify-content:center; flex-wrap:wrap; gap:.8rem; }
+        .btn { display:inline-flex; align-items:center; gap:.52rem; padding:.78rem 1.36rem; border-radius:999px; font-weight:600; font-size:.9rem; transition:transform .2s,box-shadow .2s; cursor:pointer; border:none; font-family:inherit; text-decoration:none; }
+        .btn-primary { color:#0e0e0e; background:#ececec; box-shadow:0 8px 24px rgba(0,0,0,.22); }
+        .btn-primary:hover { transform:translateY(-2px); }
+        .btn-secondary { color:var(--text); border:1px solid #2f2f2f; background:#111; }
+        .btn-secondary:hover { border-color:var(--accent-a); transform:translateY(-2px); }
 
-        /* BUTTONS */
-        .btn { display: inline-flex; align-items: center; gap: 0.52rem; padding: 0.78rem 1.36rem; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; cursor: pointer; border: none; font-family: inherit; }
-        .btn-primary { color: #0e0e0e; background: #ececec; box-shadow: 0 8px 24px rgba(0,0,0,0.22); }
-        .btn-primary:hover { transform: translateY(-2px); }
-        .btn-secondary { color: var(--text); border: 1px solid #2f2f2f; background: #111; }
-        .btn-secondary:hover { border-color: var(--accent-a); transform: translateY(-2px); }
+        /* HOME SECTIONS */
+        section { padding:5.4rem 0; position:relative; }
+        .about,.process,.transparency { border-top:1px solid var(--stroke); }
+        .about-lead { max-width:680px; margin-bottom:.35rem; color:#cbcbcb; }
+        .about-features { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; margin-top:1.6rem; }
+        .feature { background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02)); border:1px solid var(--stroke); border-radius:18px; padding:1.25rem; transition:transform .2s,border-color .2s; }
+        .feature:hover { transform:translateY(-4px); border-color:#325c83; }
+        .feature-icon { width:52px; height:52px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#ebf3fb; font-size:1.35rem; margin-bottom:.8rem; border:1px solid #2a4055; background:linear-gradient(140deg,rgba(137,170,204,.25),rgba(78,133,191,.14)); }
+        .feature strong { display:block; font-size:1rem; margin-bottom:.35rem; }
+        .feature p { color:var(--muted); font-size:.93rem; }
+        .submission { border-top:1px solid var(--stroke); }
+        .submit-panel { border:1px solid var(--stroke); border-radius:22px; padding:2rem; text-align:center; background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.015)); }
+        .submit-panel p { color:var(--muted); max-width:540px; margin:0 auto 1.6rem; }
+        .process-steps { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
+        .step { border:1px solid var(--stroke); border-radius:20px; padding:1.35rem; background:#121212; min-height:220px; }
+        .step-number { width:42px; height:42px; border-radius:999px; display:flex; align-items:center; justify-content:center; margin-bottom:.8rem; font-weight:700; font-size:1.06rem; color:#dcecf9; border:1px solid #2a4055; background:linear-gradient(140deg,rgba(137,170,204,.22),rgba(78,133,191,.12)); }
+        .step h3 { font-size:1.08rem; margin-bottom:.55rem; }
+        .step p { color:var(--muted); font-size:.94rem; }
+        .impact { border-top:1px solid var(--stroke); border-bottom:1px solid var(--stroke); }
+        .impact-stats { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
+        .stat { border-radius:20px; border:1px solid #1e2a34; background:linear-gradient(180deg,rgba(137,170,204,.12),rgba(78,133,191,.04)); padding:1.5rem 1rem; text-align:center; }
+        .stat-number { display:block; font-size:clamp(2rem,5vw,2.8rem); font-weight:700; line-height:1; margin-bottom:.4rem; }
+        .stat-label { color:#c7d7e6; font-size:.92rem; letter-spacing:.05em; text-transform:uppercase; }
+        .funds-breakdown { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
+        .fund-item { border:1px solid var(--stroke); border-radius:16px; background:#121212; display:flex; gap:.8rem; align-items:flex-start; padding:1rem; }
+        .fund-item i { color:#b9d3ea; margin-top:.14rem; }
+        .fund-item strong { display:block; margin-bottom:.3rem; }
+        .fund-item p { color:var(--muted); font-size:.9rem; }
+        .contact { border-top:1px solid var(--stroke); padding-top:5.1rem; padding-bottom:2rem; }
+        .contact-content { display:grid; grid-template-columns:1.2fr 1fr; gap:1.5rem; }
+        .contact-panel,.links-panel { border:1px solid var(--stroke); border-radius:20px; background:#101010; padding:1.35rem; }
+        .contact-panel h3,.links-panel h3 { font-size:1.25rem; margin-bottom:.75rem; }
+        .contact-panel p,.links-panel p { color:var(--muted); margin-bottom:.6rem; }
+        .links-panel ul { list-style:none; display:grid; gap:.65rem; }
+        .links-panel a { color:#d7e6f4; text-decoration:none; transition:color .2s; cursor:pointer; }
+        .links-panel a:hover { color:#fff; }
+        footer { padding:1.1rem 0 1.9rem; text-align:center; color:var(--muted); font-size:.86rem; }
 
-        /* SECTIONS */
-        section { padding: 5.4rem 0; position: relative; }
-        .about, .process, .transparency { border-top: 1px solid var(--stroke); }
-        .about-lead { max-width: 680px; margin-bottom: 0.35rem; color: #cbcbcb; }
-        .about-features { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; margin-top: 1.6rem; }
-        .feature { background: linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02)); border: 1px solid var(--stroke); border-radius: 18px; padding: 1.25rem; transition: transform 0.2s ease, border-color 0.2s ease; }
-        .feature:hover { transform: translateY(-4px); border-color: #325c83; }
-        .feature-icon { width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #ebf3fb; font-size: 1.35rem; margin-bottom: 0.8rem; border: 1px solid #2a4055; background: linear-gradient(140deg,rgba(137,170,204,0.25),rgba(78,133,191,0.14)); }
-        .feature strong { display: block; font-size: 1rem; margin-bottom: 0.35rem; }
-        .feature p { color: var(--muted); font-size: 0.93rem; }
-        .submission { border-top: 1px solid var(--stroke); }
-        .submit-panel { border: 1px solid var(--stroke); border-radius: 22px; padding: 2rem; text-align: center; background: linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.015)); }
-        .submit-panel p { color: var(--muted); max-width: 540px; margin: 0 auto 1.6rem; }
-        .process-steps { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; }
-        .step { border: 1px solid var(--stroke); border-radius: 20px; padding: 1.35rem; background: #121212; min-height: 220px; }
-        .step-number { width: 42px; height: 42px; border-radius: 999px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.8rem; font-weight: 700; font-size: 1.06rem; color: #dcecf9; border: 1px solid #2a4055; background: linear-gradient(140deg,rgba(137,170,204,0.22),rgba(78,133,191,0.12)); }
-        .step h3 { font-size: 1.08rem; margin-bottom: 0.55rem; }
-        .step p { color: var(--muted); font-size: 0.94rem; }
-        .impact { border-top: 1px solid var(--stroke); border-bottom: 1px solid var(--stroke); }
-        .impact-stats { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; }
-        .stat { border-radius: 20px; border: 1px solid #1e2a34; background: linear-gradient(180deg,rgba(137,170,204,0.12),rgba(78,133,191,0.04)); padding: 1.5rem 1rem; text-align: center; }
-        .stat-number { display: block; font-size: clamp(2rem,5vw,2.8rem); font-weight: 700; line-height: 1; margin-bottom: 0.4rem; }
-        .stat-label { color: #c7d7e6; font-size: 0.92rem; letter-spacing: 0.05em; text-transform: uppercase; }
-        .funds-breakdown { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; }
-        .fund-item { border: 1px solid var(--stroke); border-radius: 16px; background: #121212; display: flex; gap: 0.8rem; align-items: flex-start; padding: 1rem; }
-        .fund-item i { color: #b9d3ea; margin-top: 0.14rem; }
-        .fund-item strong { display: block; margin-bottom: 0.3rem; }
-        .fund-item p { color: var(--muted); font-size: 0.9rem; }
-        .contact { border-top: 1px solid var(--stroke); padding-top: 5.1rem; padding-bottom: 2rem; }
-        .contact-content { display: grid; grid-template-columns: 1.2fr 1fr; gap: 1.5rem; }
-        .contact-panel, .links-panel { border: 1px solid var(--stroke); border-radius: 20px; background: #101010; padding: 1.35rem; }
-        .contact-panel h3, .links-panel h3 { font-size: 1.25rem; margin-bottom: 0.75rem; }
-        .contact-panel p, .links-panel p { color: var(--muted); margin-bottom: 0.6rem; }
-        .links-panel ul { list-style: none; display: grid; gap: 0.65rem; }
-        .links-panel a { color: #d7e6f4; text-decoration: none; transition: color 0.2s ease; }
-        .links-panel a:hover { color: #ffffff; }
-        footer { padding: 1.1rem 0 1.9rem; text-align: center; color: var(--muted); font-size: 0.86rem; }
+        /* AUTH PAGE */
+        .auth-page { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:1.2rem; position:relative; }
+        .auth-shell { width:min(460px,100%); border:1px solid var(--stroke); border-radius:22px; background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.015)); padding:2rem; box-shadow:0 22px 44px rgba(0,0,0,.28); position:relative; }
+        .back-home { display:inline-flex; align-items:center; gap:.4rem; color:var(--muted); font-size:.85rem; cursor:pointer; background:none; border:none; font-family:inherit; margin-bottom:1.2rem; transition:color .2s; }
+        .back-home:hover { color:var(--text); }
+        .auth-logo { display:flex; align-items:center; gap:.5rem; justify-content:center; margin-bottom:1.4rem; color:var(--text); font-weight:700; }
+        .auth-logo-ring { width:34px; height:34px; border-radius:999px; background:linear-gradient(90deg,var(--accent-a),var(--accent-b)); padding:1.6px; }
+        .auth-logo-core { width:100%; height:100%; border-radius:999px; background:var(--bg); border:1px solid rgba(255,255,255,.15); display:flex; align-items:center; justify-content:center; font-size:.68rem; font-weight:700; }
+        .auth-shell h1 { text-align:center; font-size:clamp(1.7rem,4vw,2.1rem); margin-bottom:.35rem; letter-spacing:-.02em; }
+        .auth-subtitle { text-align:center; color:var(--muted); font-size:.95rem; margin-bottom:1.6rem; }
+        .auth-msg { border:1px solid rgba(220,53,69,.45); background:rgba(220,53,69,.12); color:#f4bec4; padding:.82rem .92rem; border-radius:11px; margin-bottom:1rem; font-size:.9rem; display:none; }
+        .form-group { margin-bottom:1rem; }
+        .form-group label { display:block; margin-bottom:.4rem; color:#d9d9d9; font-weight:500; font-size:.9rem; }
+        .form-group input, .form-group select { width:100%; padding:.82rem .95rem; border-radius:11px; border:1px solid var(--stroke); background:#101010; color:var(--text); font-size:.95rem; font-family:inherit; transition:border-color .2s,box-shadow .2s; }
+        .form-group input:focus, .form-group select:focus { outline:none; border-color:#2f567a; box-shadow:0 0 0 3px rgba(78,133,191,.16); }
+        .auth-btn { width:100%; border:none; border-radius:999px; padding:.82rem 1rem; margin-top:.3rem; font-weight:600; font-size:.94rem; color:#0e0e0e; background:#ededed; cursor:pointer; transition:transform .2s; font-family:inherit; }
+        .auth-btn:hover { transform:translateY(-2px); }
+        .link-section { text-align:center; margin-top:1.25rem; color:var(--muted); font-size:.9rem; }
+        .link-section button { background:none; border:none; color:#d7e6f4; font-weight:600; cursor:pointer; font-size:.9rem; font-family:inherit; }
+        .link-section button:hover { text-decoration:underline; }
+        .admin-hint { text-align:center; margin-top:1rem; color:#444; font-size:.8rem; }
 
-        @keyframes fade-up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+        /* DASH / ADMIN HEADER */
+        .dash-header { position:sticky; top:0; z-index:100; background:rgba(10,10,10,.72); backdrop-filter:blur(10px); border-bottom:1px solid var(--stroke); }
+        .dash-header .container { display:flex; justify-content:space-between; align-items:center; gap:.9rem; padding:.9rem 0; flex-wrap:wrap; }
+        .dash-logo { display:inline-flex; align-items:center; gap:.5rem; font-size:1rem; font-weight:700; letter-spacing:.02em; }
+        .dash-logo-ring { width:30px; height:30px; border-radius:999px; padding:1.6px; background:linear-gradient(90deg,var(--accent-a),var(--accent-b)); }
+        .dash-logo-core { width:100%; height:100%; border-radius:999px; background:var(--bg); border:1px solid rgba(255,255,255,.15); display:flex; align-items:center; justify-content:center; font-size:.62rem; font-weight:700; }
+        .logo-role { display:inline-block; font-size:.7rem; padding:.16rem .5rem; border-radius:999px; border:1px solid rgba(255,255,255,.18); color:#cfd8e2; text-transform:uppercase; letter-spacing:.1em; }
+        .user-section { display:flex; align-items:center; gap:.65rem; color:var(--muted); font-size:.85rem; flex-wrap:wrap; justify-content:flex-end; }
+        .logout-btn, .pill-btn { text-decoration:none; color:var(--text); border:1px solid var(--stroke); background:var(--surface); padding:.5rem .8rem; border-radius:999px; font-weight:600; font-size:.8rem; transition:border-color .2s,transform .2s; cursor:pointer; font-family:inherit; }
+        .logout-btn:hover, .pill-btn:hover { border-color:#325c83; transform:translateY(-1px); }
 
-        /* MODAL OVERLAY */
-        .modal-overlay {
-            display: none; position: fixed; inset: 0; z-index: 2000;
-            background: rgba(0,0,0,0.72); backdrop-filter: blur(6px);
-            align-items: center; justify-content: center; padding: 1.2rem;
-        }
-        .modal-overlay.active { display: flex; }
-        .auth-shell {
-            width: min(460px, 100%); border: 1px solid var(--stroke); border-radius: 22px;
-            background: linear-gradient(180deg,rgba(20,20,20,0.98),rgba(15,15,15,0.99));
-            padding: 2rem; box-shadow: 0 22px 44px rgba(0,0,0,0.5);
-            position: relative; animation: fade-up 0.25s ease both;
-        }
-        .modal-close {
-            position: absolute; top: 1rem; right: 1rem; background: none; border: none;
-            color: var(--muted); font-size: 1.1rem; cursor: pointer; line-height: 1;
-            transition: color 0.2s ease;
-        }
-        .modal-close:hover { color: var(--text); }
-        .auth-logo { width: fit-content; margin: 0 auto 1.4rem; display: flex; align-items: center; gap: 0.5rem; color: var(--text); font-weight: 700; letter-spacing: 0.02em; }
-        .auth-logo-ring { width: 34px; height: 34px; border-radius: 999px; background: linear-gradient(90deg,var(--accent-a),var(--accent-b)); padding: 1.6px; }
-        .auth-logo-core { width: 100%; height: 100%; border-radius: 999px; background: var(--bg); border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-size: 0.68rem; font-weight: 700; }
-        .auth-shell h1 { text-align: center; font-size: clamp(1.7rem,4vw,2.1rem); margin-bottom: 0.35rem; letter-spacing: -0.02em; }
-        .auth-subtitle { text-align: center; color: var(--muted); font-size: 0.95rem; margin-bottom: 1.6rem; }
-        .auth-msg { border: 1px solid rgba(220,53,69,0.45); background: rgba(220,53,69,0.12); color: #f4bec4; padding: 0.82rem 0.92rem; border-radius: 11px; margin-bottom: 1rem; font-size: 0.9rem; display: none; }
-        .form-group { margin-bottom: 1rem; }
-        .form-group label { display: block; margin-bottom: 0.4rem; color: #d9d9d9; font-weight: 500; font-size: 0.9rem; }
-        .form-group input { width: 100%; padding: 0.82rem 0.95rem; border-radius: 11px; border: 1px solid var(--stroke); background: #101010; color: var(--text); font-size: 0.95rem; font-family: inherit; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
-        .form-group input:focus { outline: none; border-color: #2f567a; box-shadow: 0 0 0 3px rgba(78,133,191,0.16); }
-        .auth-btn { width: 100%; border: none; border-radius: 999px; padding: 0.82rem 1rem; margin-top: 0.3rem; font-weight: 600; font-size: 0.94rem; color: #0e0e0e; background: #ededed; cursor: pointer; transition: transform 0.2s ease; font-family: inherit; }
-        .auth-btn:hover { transform: translateY(-2px); }
-        .link-section { text-align: center; margin-top: 1.25rem; color: var(--muted); font-size: 0.9rem; }
-        .link-section button { background: none; border: none; color: #d7e6f4; font-weight: 600; cursor: pointer; font-size: 0.9rem; padding: 0; font-family: inherit; }
-        .link-section button:hover { text-decoration: underline; }
-        .server-notice { text-align: center; margin-top: 1rem; font-size: 0.82rem; color: #555; }
+        /* DASHBOARD FORM */
+        .section { margin:1.2rem 0; border:1px solid var(--stroke); border-radius:20px; background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.015)); padding:1.35rem; }
+        h1 { font-size:clamp(1.6rem,4vw,2.25rem); margin-bottom:.55rem; letter-spacing:-.02em; }
+        h2 { font-size:1.15rem; margin:0 0 .8rem; color:#e7edf4; }
+        .form-container { max-width:700px; }
+        .form-container .form-group input, .form-container .form-group select { width:100%; padding:.8rem .9rem; border:1px solid var(--stroke); border-radius:10px; font-size:.94rem; color:var(--text); background:#101010; font-family:inherit; transition:border-color .2s,box-shadow .2s; }
+        .form-container .form-group input:focus, .form-container .form-group select:focus { outline:none; border-color:#325c83; box-shadow:0 0 0 3px rgba(78,133,191,.16); }
+        .device-group { border:1px solid var(--stroke); border-radius:12px; padding:.95rem; margin-bottom:.9rem; background:var(--surface); }
+        .device-group-title { margin:0 0 .7rem; font-size:.95rem; font-weight:700; color:#dfebf8; letter-spacing:.02em; }
+        .btn-full { display:block; width:100%; padding:.84rem 1rem; background:#ededed; color:#101010; border:none; border-radius:999px; font-weight:600; font-size:.94rem; transition:transform .2s; cursor:pointer; text-align:center; margin-top:.25rem; font-family:inherit; }
+        .btn-full:hover { transform:translateY(-2px); }
+        .success-msg { border:1px solid rgba(40,167,69,.4); background:rgba(40,167,69,.12); color:#c8f2d2; padding:.82rem .92rem; border-radius:11px; margin-bottom:1rem; font-size:.9rem; }
+        .error-msg { border:1px solid rgba(220,53,69,.45); background:rgba(220,53,69,.12); color:#f4bec4; padding:.82rem .92rem; border-radius:11px; margin-bottom:1rem; font-size:.9rem; }
+
+        /* SUBMISSION CARDS */
+        .submissions-list { margin-top:1.2rem; display:grid; gap:.9rem; }
+        .submission-card { background:#111; border-radius:14px; padding:1rem; border:1px solid var(--stroke); }
+        .submission-header { display:flex; justify-content:space-between; align-items:flex-start; gap:.7rem; margin-bottom:.75rem; }
+        .submission-header h3 { margin:0; color:var(--text); font-size:1.05rem; }
+        .status-badge { padding:.25rem .6rem; border-radius:999px; font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.06em; border:1px solid transparent; white-space:nowrap; }
+        .status-pending { color:#ffe7a8; background:rgba(255,193,7,.14); border-color:rgba(255,193,7,.28); }
+        .status-estimated { color:#c7ebf3; background:rgba(23,162,184,.17); border-color:rgba(23,162,184,.3); }
+        .status-approved,.status-completed { color:#c8f2d2; background:rgba(40,167,69,.16); border-color:rgba(40,167,69,.3); }
+        .status-rejected { color:#f3c2c7; background:rgba(220,53,69,.17); border-color:rgba(220,53,69,.32); }
+        .submission-details { margin-bottom:.85rem; }
+        .detail-row { display:flex; justify-content:space-between; gap:.8rem; margin-bottom:.35rem; font-size:.86rem; }
+        .detail-row .label { color:var(--muted); font-weight:500; }
+        .detail-row .value { color:var(--text); font-weight:600; text-align:right; }
+        .submission-images h4 { margin-bottom:.45rem; color:#d8e7f5; font-size:.82rem; text-transform:uppercase; letter-spacing:.07em; }
+        .image-thumbnails { display:flex; gap:.45rem; flex-wrap:wrap; }
+        .image-thumbnails img { width:58px; height:58px; object-fit:cover; border-radius:8px; cursor:pointer; border:1px solid var(--stroke); transition:transform .2s; }
+        .image-thumbnails img:hover { transform:scale(1.06); }
+
+        /* ADMIN STATS + TABLE */
+        .stats { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.9rem; margin-bottom:1.4rem; }
+        .stat-card { border:1px solid var(--stroke); border-radius:14px; background:#111; padding:1rem; text-align:center; }
+        .stat-number { display:block; font-size:clamp(1.45rem,3.5vw,2.2rem); font-weight:700; line-height:1; margin-bottom:.3rem; color:#eaf3fb; }
+        .stat-label { color:var(--muted); font-size:.82rem; letter-spacing:.04em; text-transform:uppercase; }
+        .impact-form { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.8rem; border:1px solid var(--stroke); background:var(--surface); border-radius:14px; padding:.95rem; margin-bottom:1.5rem; align-items:end; }
+        .impact-form .form-group label { display:block; margin-bottom:.35rem; color:#cfd8e2; font-size:.8rem; font-weight:600; }
+        .impact-form input { width:100%; padding:.56rem .65rem; border-radius:9px; border:1px solid var(--stroke); background:#0f0f0f; color:var(--text); font-size:.88rem; font-family:inherit; }
+        .impact-form input:focus { outline:none; border-color:#325c83; }
+        .status-update-btn { border:none; border-radius:999px; padding:.52rem .78rem; font-size:.78rem; font-weight:600; cursor:pointer; background:#ebebeb; color:#111; transition:transform .2s; font-family:inherit; }
+        .status-update-btn:hover { transform:translateY(-1px); }
+        .delete-btn { border:none; border-radius:999px; padding:.42rem .68rem; font-size:.75rem; font-weight:600; cursor:pointer; background:rgba(220,53,69,.86); color:#fff; transition:transform .2s; font-family:inherit; margin-top:.4rem; display:block; }
+        .delete-btn:hover { transform:translateY(-1px); opacity:.9; }
+        .table-wrap { width:100%; overflow-x:auto; border:1px solid var(--stroke); border-radius:14px; background:var(--surface); }
+        .submissions-table { width:100%; border-collapse:collapse; min-width:980px; }
+        .submissions-table th,.submissions-table td { padding:.68rem .58rem; text-align:left; border-bottom:1px solid var(--stroke); font-size:.82rem; vertical-align:top; }
+        .submissions-table th { color:#d7e6f4; font-size:.75rem; text-transform:uppercase; letter-spacing:.08em; background:#141414; }
+        .status-update-form { display:flex; flex-direction:column; gap:.45rem; min-width:118px; }
+        .status-select { width:100%; padding:.5rem .6rem; border-radius:9px; border:1px solid var(--stroke); background:#0f0f0f; color:var(--text); font-size:.82rem; font-family:inherit; }
+        .response-block { min-width:220px; display:grid; gap:.18rem; color:#cfcfcf; font-size:.8rem; }
+        .response-block strong { color:#efefef; }
+        .actions-cell { min-width:120px; }
+
+        /* MODALS */
+        .img-modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,.82); z-index:2000; justify-content:center; align-items:center; padding:1rem; }
+        .img-modal.open { display:flex; }
+        .img-modal-card { background:#0f0f0f; border:1px solid var(--stroke); border-radius:14px; width:min(760px,100%); max-height:88vh; overflow:auto; position:relative; padding:1rem; }
+        .modal-x { position:absolute; top:.65rem; right:.65rem; background:#151515; color:var(--text); border:1px solid var(--stroke); border-radius:999px; width:30px; height:30px; cursor:pointer; font-size:.95rem; display:flex; align-items:center; justify-content:center; }
+        #modalImage { max-width:100%; max-height:80vh; display:block; margin:1.5rem auto 0; border-radius:10px; border:1px solid var(--stroke); }
+        .admin-img-modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,.8); z-index:2000; justify-content:center; align-items:center; padding:1rem; }
+        .admin-img-modal.open { display:flex; }
+        .admin-img-card { background:#0f0f0f; border:1px solid var(--stroke); border-radius:14px; width:min(860px,100%); max-height:85vh; overflow:auto; padding:1rem; }
+        .admin-img-card h3 { margin-bottom:.7rem; }
+        #adminImageContainer img { max-width:180px; margin:.35rem; border-radius:10px; border:1px solid var(--stroke); }
+        .modal-close-btn { margin-top:.8rem; border:1px solid var(--stroke); background:#1a1a1a; color:var(--text); border-radius:999px; padding:.44rem .8rem; cursor:pointer; font-family:inherit; }
+
+        @keyframes fade-up { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
 
         /* RESPONSIVE */
-        @media (max-width: 1100px) {
-            .about-features, .process-steps, .impact-stats, .funds-breakdown { grid-template-columns: repeat(2,minmax(0,1fr)); }
-            .fund-item:last-child { grid-column: 1 / -1; }
+        @media(max-width:1100px){
+            .about-features,.process-steps,.impact-stats,.funds-breakdown{grid-template-columns:repeat(2,minmax(0,1fr))}
+            .fund-item:last-child{grid-column:1/-1}
+            .stats{grid-template-columns:1fr}
+            .impact-form{grid-template-columns:1fr 1fr}
         }
-        @media (max-width: 860px) {
-            nav { width: calc(100% - 14px); justify-content: space-between; }
-            .logo-label, .nav-links { display: none; }
-            .contact-content { grid-template-columns: 1fr; }
+        @media(max-width:860px){
+            nav{width:calc(100% - 14px);justify-content:space-between}
+            .logo-label,.nav-links{display:none}
+            .contact-content{grid-template-columns:1fr}
+            .dash-header .container{flex-direction:column;align-items:stretch}
+            .user-section{justify-content:space-between}
         }
-        @media (max-width: 700px) {
-            .hero { padding: 8.7rem 0 4.8rem; }
-            section { padding: 4.4rem 0; }
-            .about-features, .process-steps, .impact-stats, .funds-breakdown { grid-template-columns: 1fr; }
-            .section-title { font-size: clamp(1.7rem,6.5vw,2.35rem); }
-            .submit-panel { padding: 1.45rem; }
+        @media(max-width:700px){
+            .hero{padding:8.7rem 0 4.8rem}
+            section{padding:4.4rem 0}
+            .about-features,.process-steps,.impact-stats,.funds-breakdown{grid-template-columns:1fr}
+            .section-title{font-size:clamp(1.7rem,6.5vw,2.35rem)}
+            .impact-form{grid-template-columns:1fr}
+            .submission-header{flex-direction:column;align-items:flex-start}
+        }
+        @media(max-width:620px){
+            .user-section{justify-content:space-between}
         }
     </style>
 </head>
 <body>
 
-    <!-- SIGN IN MODAL -->
-    <div class="modal-overlay" id="signinModal">
-        <div class="auth-shell">
-            <button class="modal-close" onclick="closeModal('signinModal')"><i class="fas fa-times"></i></button>
-            <div class="auth-logo">
-                <span class="auth-logo-ring"><span class="auth-logo-core">TL</span></span>
-                <span>Tech Loop</span>
-            </div>
-            <h1>Sign In</h1>
-            <p class="auth-subtitle">Welcome back. Continue your donation journey.</p>
-            <div class="auth-msg" id="signinMsg"></div>
-            <form action="http://localhost:5000/signin" method="POST">
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" name="password" required>
-                </div>
-                <button type="submit" class="auth-btn">Sign In</button>
-            </form>
-            <div class="link-section">
-                Don't have an account? <button onclick="switchModal('signinModal','signupModal')">Create one here</button>
-            </div>
-            <p class="server-notice">Requires the Tech Loop server to be running.</p>
-        </div>
-    </div>
-
-    <!-- SIGN UP MODAL -->
-    <div class="modal-overlay" id="signupModal">
-        <div class="auth-shell">
-            <button class="modal-close" onclick="closeModal('signupModal')"><i class="fas fa-times"></i></button>
-            <div class="auth-logo">
-                <span class="auth-logo-ring"><span class="auth-logo-core">TL</span></span>
-                <span>Tech Loop</span>
-            </div>
-            <h1>Create Account</h1>
-            <p class="auth-subtitle">Join Tech Loop and start donating your devices.</p>
-            <div class="auth-msg" id="signupMsg"></div>
-            <form action="http://localhost:5000/signup" method="POST">
-                <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" name="password" required minlength="6">
-                </div>
-                <div class="form-group">
-                    <label>Confirm Password</label>
-                    <input type="password" name="confirm_password" required minlength="6">
-                </div>
-                <button type="submit" class="auth-btn">Create Account</button>
-            </form>
-            <div class="link-section">
-                Already have an account? <button onclick="switchModal('signupModal','signinModal')">Sign In</button>
-            </div>
-            <p class="server-notice">Requires the Tech Loop server to be running.</p>
-        </div>
-    </div>
-
-    <!-- MAIN PAGE -->
-    <header>
+<!-- ============================================================ HOME PAGE ============================================================ -->
+<div id="page-home" class="page">
+    <div class="home-header">
         <nav id="mainNav">
-            <a class="logo" href="#home">
+            <button class="logo" onclick="showPage('home')">
                 <span class="logo-ring accent-gradient"><span class="logo-core">TL</span></span>
                 <span class="logo-label">Tech Loop</span>
-            </a>
+            </button>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#process">Process</a></li>
-                <li><a href="#impact">Impact</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a onclick="homeScroll('home-hero')">Home</a></li>
+                <li><a onclick="homeScroll('home-about')">About</a></li>
+                <li><a onclick="homeScroll('home-process')">Process</a></li>
+                <li><a onclick="homeScroll('home-impact')">Impact</a></li>
+                <li><a onclick="homeScroll('home-contact')">Contact</a></li>
             </ul>
-            <button class="cta-link" onclick="openModal('signupModal')">Join Us</button>
+            <button class="cta-link" onclick="openAuth('signup')">Join Us</button>
         </nav>
-    </header>
+    </div>
 
-    <section class="hero" id="home">
+    <section class="hero" id="home-hero">
         <div class="container hero-inner">
             <h1>Turn Your Old Devices Into Opportunity</h1>
             <p>Donate your used phones, laptops, and tablets. We refurbish them and get them into the hands of students who need them most while keeping e-waste out of landfills.</p>
             <div class="cta-buttons">
-                <button class="btn btn-primary" onclick="openModal('signupModal')"><i class="fas fa-heart"></i> Donate Your Device</button>
-                <button class="btn btn-secondary" onclick="openModal('signinModal')"><i class="fas fa-right-to-bracket"></i> Sign In</button>
+                <button class="btn btn-primary" onclick="openAuth('signup')"><i class="fas fa-heart"></i> Donate Your Device</button>
+                <button class="btn btn-secondary" onclick="openAuth('signin')"><i class="fas fa-right-to-bracket"></i> Sign In</button>
             </div>
         </div>
     </section>
 
-    <section class="about" id="about">
+    <section class="about" id="home-about">
         <div class="container">
             <div class="section-head">
                 <span class="eyebrow">Our Mission</span>
@@ -269,38 +267,26 @@
                 <p class="about-lead">We are a student-led initiative committed to sustainability and digital access. Every donated device gets a second life and helps students who otherwise could not afford the technology they need.</p>
             </div>
             <div class="about-features">
-                <article class="feature">
-                    <div class="feature-icon"><i class="fas fa-leaf"></i></div>
-                    <strong>Sustainability</strong>
-                    <p>Keep devices out of landfills through responsible reuse and recycling.</p>
-                </article>
-                <article class="feature">
-                    <div class="feature-icon"><i class="fas fa-eye"></i></div>
-                    <strong>Transparency</strong>
-                    <p>Track how donations are processed and where impact is being created.</p>
-                </article>
-                <article class="feature">
-                    <div class="feature-icon"><i class="fas fa-users"></i></div>
-                    <strong>Impact</strong>
-                    <p>Convert old tech into opportunities for students in your community.</p>
-                </article>
+                <article class="feature"><div class="feature-icon"><i class="fas fa-leaf"></i></div><strong>Sustainability</strong><p>Keep devices out of landfills through responsible reuse and recycling.</p></article>
+                <article class="feature"><div class="feature-icon"><i class="fas fa-eye"></i></div><strong>Transparency</strong><p>Track how donations are processed and where impact is being created.</p></article>
+                <article class="feature"><div class="feature-icon"><i class="fas fa-users"></i></div><strong>Impact</strong><p>Convert old tech into opportunities for students in your community.</p></article>
             </div>
         </div>
     </section>
 
-    <section class="submission" id="submit">
+    <section class="submission" id="home-submit">
         <div class="container">
             <div class="submit-panel">
                 <span class="eyebrow">Start Today</span>
                 <h2 class="section-title">Ready to Donate?</h2>
                 <p>Create an account to submit your device details and start your donation journey with Tech Loop.</p>
-                <button class="btn btn-primary" onclick="openModal('signupModal')"><i class="fas fa-user-plus"></i> Create Your Account</button>
-                <p style="margin-top:1rem;">Already have an account? <button onclick="openModal('signinModal')" style="background:none;border:none;color:#d7e6f4;font-weight:600;cursor:pointer;font-size:inherit;font-family:inherit;">Sign in here</button>.</p>
+                <button class="btn btn-primary" onclick="openAuth('signup')"><i class="fas fa-user-plus"></i> Create Your Account</button>
+                <p style="margin-top:1rem;">Already have an account? <button onclick="openAuth('signin')" style="background:none;border:none;color:#d7e6f4;font-weight:600;cursor:pointer;font-size:inherit;font-family:inherit;">Sign in here</button>.</p>
             </div>
         </div>
     </section>
 
-    <section class="process" id="process">
+    <section class="process" id="home-process">
         <div class="container">
             <div class="section-head center">
                 <span class="eyebrow">How It Works</span>
@@ -308,49 +294,28 @@
                 <p class="section-subtitle">A simple, transparent process that ensures devices are put to meaningful use.</p>
             </div>
             <div class="process-steps">
-                <article class="step">
-                    <div class="step-number">1</div>
-                    <h3>Device Collected</h3>
-                    <p>Submit your old device details and photos. We review everything and confirm your donation.</p>
-                </article>
-                <article class="step">
-                    <div class="step-number">2</div>
-                    <h3>Repair And Refurbish</h3>
-                    <p>If the device can be repaired, we restore it for reuse. If not, we responsibly recycle or repurpose parts.</p>
-                </article>
-                <article class="step">
-                    <div class="step-number">3</div>
-                    <h3>Donated To Students</h3>
-                    <p>Refurbished devices are distributed to students who need reliable technology for learning.</p>
-                </article>
+                <article class="step"><div class="step-number">1</div><h3>Device Collected</h3><p>Submit your old device details and photos. We review everything and confirm your donation.</p></article>
+                <article class="step"><div class="step-number">2</div><h3>Repair And Refurbish</h3><p>If the device can be repaired, we restore it for reuse. If not, we responsibly recycle or repurpose parts.</p></article>
+                <article class="step"><div class="step-number">3</div><h3>Donated To Students</h3><p>Refurbished devices are distributed to students who need reliable technology for learning.</p></article>
             </div>
         </div>
     </section>
 
-    <section class="impact" id="impact">
+    <section class="impact" id="home-impact">
         <div class="container">
             <div class="section-head center">
                 <span class="eyebrow">Our Impact</span>
                 <h2 class="section-title">Real Numbers, Real Change</h2>
             </div>
             <div class="impact-stats">
-                <article class="stat">
-                    <span class="stat-number" id="stat-devices">0</span>
-                    <div class="stat-label">Devices Processed</div>
-                </article>
-                <article class="stat">
-                    <span class="stat-number" id="stat-students">0</span>
-                    <div class="stat-label">Students Helped</div>
-                </article>
-                <article class="stat">
-                    <span class="stat-number" id="stat-ewaste">0</span>
-                    <div class="stat-label">E-Waste Diverted</div>
-                </article>
+                <article class="stat"><span class="stat-number" id="stat-devices">0</span><div class="stat-label">Devices Processed</div></article>
+                <article class="stat"><span class="stat-number" id="stat-students">0</span><div class="stat-label">Students Helped</div></article>
+                <article class="stat"><span class="stat-number" id="stat-ewaste">0</span><div class="stat-label">E-Waste Diverted</div></article>
             </div>
         </div>
     </section>
 
-    <section class="transparency" id="transparency">
+    <section class="transparency" id="home-transparency">
         <div class="container">
             <div class="section-head center">
                 <span class="eyebrow">Transparency</span>
@@ -358,23 +323,14 @@
                 <p class="section-subtitle">100% of proceeds fund refurbishment and student access initiatives.</p>
             </div>
             <div class="funds-breakdown">
-                <article class="fund-item">
-                    <i class="fas fa-tools fa-xl"></i>
-                    <div><strong>Refurbishment (60%)</strong><p>Device diagnostics, repairs, and quality testing.</p></div>
-                </article>
-                <article class="fund-item">
-                    <i class="fas fa-graduation-cap fa-xl"></i>
-                    <div><strong>Digital Access For Students (30%)</strong><p>Delivering functional tech to students in need.</p></div>
-                </article>
-                <article class="fund-item">
-                    <i class="fas fa-leaf fa-xl"></i>
-                    <div><strong>Operations (10%)</strong><p>Logistics, distribution, and sustainability operations.</p></div>
-                </article>
+                <article class="fund-item"><i class="fas fa-tools fa-xl"></i><div><strong>Refurbishment (60%)</strong><p>Device diagnostics, repairs, and quality testing.</p></div></article>
+                <article class="fund-item"><i class="fas fa-graduation-cap fa-xl"></i><div><strong>Digital Access For Students (30%)</strong><p>Delivering functional tech to students in need.</p></div></article>
+                <article class="fund-item"><i class="fas fa-leaf fa-xl"></i><div><strong>Operations (10%)</strong><p>Logistics, distribution, and sustainability operations.</p></div></article>
             </div>
         </div>
     </section>
 
-    <section class="contact" id="contact">
+    <section class="contact" id="home-contact">
         <div class="container">
             <div class="contact-content">
                 <article class="contact-panel">
@@ -386,66 +342,494 @@
                 <article class="links-panel">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#process">How It Works</a></li>
-                        <li><a href="#submit">Submit Device</a></li>
-                        <li><a href="#transparency">Transparency</a></li>
+                        <li><a onclick="homeScroll('home-about')">About Us</a></li>
+                        <li><a onclick="homeScroll('home-process')">How It Works</a></li>
+                        <li><a onclick="homeScroll('home-submit')">Submit Device</a></li>
+                        <li><a onclick="homeScroll('home-transparency')">Transparency</a></li>
                     </ul>
                 </article>
             </div>
         </div>
     </section>
+    <footer><p>&copy; 2026 Tech Loop. All rights reserved. Turning old devices into opportunity.</p></footer>
+</div>
 
-    <footer>
-        <p>&copy; 2026 Tech Loop. All rights reserved. Turning old devices into opportunity.</p>
-    </footer>
+<!-- ============================================================ AUTH PAGE ============================================================ -->
+<div id="page-auth" class="page" style="display:none">
+    <div class="auth-page">
+        <div class="auth-shell">
+            <button class="back-home" onclick="showPage('home')"><i class="fas fa-arrow-left"></i> Back to Home</button>
+            <div class="auth-logo">
+                <span class="auth-logo-ring"><span class="auth-logo-core">TL</span></span>
+                <span>Tech Loop</span>
+            </div>
+            <div id="auth-msg" class="auth-msg"></div>
 
-    <script>
-        // Nav scroll + active link
-        const nav = document.getElementById('mainNav');
-        const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
-        window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 80));
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(e => {
-                if (!e.isIntersecting) return;
-                const id = e.target.getAttribute('id');
-                navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
-            });
-        }, { threshold: 0.45 });
-        document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
+            <!-- SIGN IN -->
+            <div id="auth-signin-form">
+                <h1>Sign In</h1>
+                <p class="auth-subtitle">Welcome back. Continue your donation journey.</p>
+                <form onsubmit="doSignin(event)">
+                    <div class="form-group"><label>Email</label><input type="email" id="si-email" required></div>
+                    <div class="form-group"><label>Password</label><input type="password" id="si-pwd" required></div>
+                    <button type="submit" class="auth-btn">Sign In</button>
+                </form>
+                <div class="link-section">Don't have an account? <button onclick="setAuthMode('signup')">Create one here</button></div>
+                <p class="admin-hint">Default admin: admin@techloop.com / admin123</p>
+            </div>
 
-        // Modal controls
-        function openModal(id) {
-            document.getElementById(id).classList.add('active');
-            document.body.style.overflow = 'hidden';
+            <!-- SIGN UP -->
+            <div id="auth-signup-form" style="display:none">
+                <h1>Create Account</h1>
+                <p class="auth-subtitle">Join Tech Loop and start donating your devices.</p>
+                <form onsubmit="doSignup(event)">
+                    <div class="form-group"><label>Full Name</label><input type="text" id="su-name" required></div>
+                    <div class="form-group"><label>Email</label><input type="email" id="su-email" required></div>
+                    <div class="form-group"><label>Password</label><input type="password" id="su-pwd" required minlength="6"></div>
+                    <div class="form-group"><label>Confirm Password</label><input type="password" id="su-cpwd" required minlength="6"></div>
+                    <button type="submit" class="auth-btn">Create Account</button>
+                </form>
+                <div class="link-section">Already have an account? <button onclick="setAuthMode('signin')">Sign In</button></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ DASHBOARD PAGE ============================================================ -->
+<div id="page-dashboard" class="page" style="display:none">
+    <div class="dash-header">
+        <div class="container">
+            <div class="dash-logo">
+                <span class="dash-logo-ring"><span class="dash-logo-core">TL</span></span>
+                <span>Tech Loop</span>
+            </div>
+            <div class="user-section">
+                <span id="dash-username"></span>
+                <button id="dash-admin-link" onclick="showPage('admin')" class="logout-btn" style="display:none">Admin Panel</button>
+                <button onclick="doLogout()" class="logout-btn">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="padding-bottom:2rem">
+        <div class="section">
+            <h1>Submit Your Device</h1>
+            <p style="color:var(--muted);margin-bottom:1.1rem;font-size:.95rem">Submit your device details below. We will review and contact you soon.</p>
+            <div id="dash-form-msg" style="display:none"></div>
+            <form id="deviceSubmissionForm" class="form-container" onsubmit="submitDeviceForm(event)">
+                <div class="form-group"><label>Name</label><input type="text" id="sub-name" name="name" required></div>
+                <div class="form-group"><label>Email</label><input type="email" id="sub-email" name="email" required></div>
+                <div class="form-group"><label>Phone</label><input type="tel" id="sub-phone" name="phone" inputmode="numeric" maxlength="11" placeholder="11-digit phone number" required></div>
+                <div class="form-group">
+                    <label>How many devices do you want to donate?</label>
+                    <select name="device_count" id="deviceCount" onchange="buildDeviceGroups(this.value)">
+                        <option value="1">1 device</option>
+                        <option value="2">2 devices</option>
+                        <option value="3">3 devices</option>
+                        <option value="4">4 devices</option>
+                        <option value="5">5 devices</option>
+                    </select>
+                </div>
+                <div id="deviceGroupsContainer"></div>
+                <button type="submit" class="btn-full">Submit Device</button>
+            </form>
+        </div>
+        <div id="user-submissions-section"></div>
+    </div>
+
+    <div id="imageModal" class="img-modal">
+        <div class="img-modal-card">
+            <button class="modal-x" onclick="closeImageModal()">x</button>
+            <img id="modalImage" src="" alt="Device image">
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================ ADMIN PAGE ============================================================ -->
+<div id="page-admin" class="page" style="display:none">
+    <div class="dash-header">
+        <div class="container">
+            <div class="dash-logo">
+                <span class="dash-logo-ring"><span class="dash-logo-core">TL</span></span>
+                <span>Tech Loop</span>
+                <span class="logo-role">Admin</span>
+            </div>
+            <div class="user-section">
+                <span id="admin-username"></span>
+                <button onclick="showPage('home')" class="pill-btn">Back to Site</button>
+                <button onclick="doLogout()" class="pill-btn">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <main class="container" style="padding:1.2rem 0 2rem">
+        <div class="section">
+            <h1>Admin Dashboard</h1>
+            <div class="stats">
+                <div class="stat-card"><span class="stat-number" id="admin-total">0</span><span class="stat-label">Total Submissions</span></div>
+                <div class="stat-card"><span class="stat-number" id="admin-pending">0</span><span class="stat-label">Pending</span></div>
+                <div class="stat-card"><span class="stat-number" id="admin-approved">0</span><span class="stat-label">Approved</span></div>
+            </div>
+
+            <h2>Update Homepage Impact Stats</h2>
+            <form class="impact-form" onsubmit="updateImpact(event)">
+                <div class="form-group"><label>Devices Processed</label><input type="number" min="0" id="imp-devices" required></div>
+                <div class="form-group"><label>Students Helped</label><input type="number" min="0" id="imp-students" required></div>
+                <div class="form-group"><label>E-Waste Diverted</label><input type="number" min="0" id="imp-ewaste" required></div>
+                <button type="submit" class="status-update-btn" id="imp-save-btn">Save Stats</button>
+            </form>
+
+            <h2>All Device Submissions</h2>
+            <div class="table-wrap">
+                <table class="submissions-table">
+                    <thead><tr><th>ID</th><th>User</th><th>Full Response</th><th>Device</th><th>Condition</th><th>Status</th><th>Update Status</th><th>Submitted</th><th>Actions</th></tr></thead>
+                    <tbody id="admin-tbody"></tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <div id="adminImageModal" class="admin-img-modal">
+        <div class="admin-img-card">
+            <h3>Device Images</h3>
+            <div id="adminImageContainer"></div>
+            <button onclick="closeAdminModal()" class="modal-close-btn">Close</button>
+        </div>
+    </div>
+</div>
+
+<script>
+// ============================================================
+// STORAGE
+// ============================================================
+const TL = {
+    getUsers(){ return JSON.parse(localStorage.getItem('tl_users')||'[]'); },
+    saveUsers(u){ localStorage.setItem('tl_users', JSON.stringify(u)); },
+    getSession(){ return JSON.parse(localStorage.getItem('tl_session')||'null'); },
+    saveSession(s){ localStorage.setItem('tl_session', JSON.stringify(s)); },
+    clearSession(){ localStorage.removeItem('tl_session'); },
+    getSubs(){ return JSON.parse(localStorage.getItem('tl_subs')||'[]'); },
+    saveSubs(s){ localStorage.setItem('tl_subs', JSON.stringify(s)); },
+    getImpact(){ return JSON.parse(localStorage.getItem('tl_impact')||'{"devices_processed":0,"students_helped":0,"ewaste_diverted":0}'); },
+    saveImpact(i){ localStorage.setItem('tl_impact', JSON.stringify(i)); }
+};
+
+// ============================================================
+// INIT
+// ============================================================
+(function init(){
+    const users = TL.getUsers();
+    if(!users.find(u => u.is_admin)){
+        users.push({ id:1, name:'Admin', email:'admin@techloop.com', password:hp('admin123'), is_admin:true, created_at:new Date().toISOString() });
+        TL.saveUsers(users);
+    }
+    // Nav scroll
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => nav && nav.classList.toggle('scrolled', window.scrollY > 80));
+    // Phone sanitization live
+    document.addEventListener('input', e => {
+        if(e.target && e.target.id === 'sub-phone'){
+            e.target.value = e.target.value.replace(/[^0-9]/g,'').slice(0,11);
         }
-        function closeModal(id) {
-            document.getElementById(id).classList.remove('active');
-            document.body.style.overflow = '';
-        }
-        function switchModal(from, to) {
-            closeModal(from);
-            openModal(to);
-        }
-        // Close on backdrop click
-        document.querySelectorAll('.modal-overlay').forEach(overlay => {
-            overlay.addEventListener('click', e => {
-                if (e.target === overlay) closeModal(overlay.id);
-            });
-        });
-        // Close on Escape key
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.active').forEach(m => closeModal(m.id));
-        });
+    });
+    // Close modals on backdrop click
+    document.getElementById('imageModal').addEventListener('click', e => { if(e.target===document.getElementById('imageModal')) closeImageModal(); });
+    document.getElementById('adminImageModal').addEventListener('click', e => { if(e.target===document.getElementById('adminImageModal')) closeAdminModal(); });
+    showPage('home');
+})();
 
-        // Live stats from server if running
-        fetch('http://localhost:5000/api/stats')
-            .then(r => r.json())
-            .then(d => {
-                if (d.devices_processed !== undefined) document.getElementById('stat-devices').textContent = d.devices_processed;
-                if (d.students_helped !== undefined) document.getElementById('stat-students').textContent = d.students_helped;
-                if (d.ewaste_diverted !== undefined) document.getElementById('stat-ewaste').textContent = d.ewaste_diverted;
-            }).catch(() => {});
-    </script>
+// ============================================================
+// PASSWORD HASH
+// ============================================================
+function hp(pwd){
+    let h = 5381;
+    for(let i=0; i<pwd.length; i++) h = ((h<<5)+h) ^ pwd.charCodeAt(i);
+    return 'h' + Math.abs(h>>>0).toString(16) + '_' + pwd.length;
+}
+
+// ============================================================
+// ROUTING
+// ============================================================
+function showPage(page){
+    const session = TL.getSession();
+    if((page==='dashboard'||page==='admin') && !session){ openAuth('signin'); return; }
+    if(page==='admin' && session && !session.is_admin){ showPage('dashboard'); return; }
+    document.querySelectorAll('.page').forEach(p => p.style.display='none');
+    const el = document.getElementById('page-'+page);
+    if(el) el.style.display='block';
+    window.scrollTo(0,0);
+    if(page==='home') updateImpactStats();
+    if(page==='dashboard') renderDashboard();
+    if(page==='admin') renderAdmin();
+}
+
+function homeScroll(id){
+    showPage('home');
+    setTimeout(()=>{ const el=document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth'}); },50);
+}
+
+// ============================================================
+// AUTH
+// ============================================================
+function openAuth(mode){
+    showPage('auth');
+    setAuthMode(mode);
+}
+
+function setAuthMode(mode){
+    document.getElementById('auth-signin-form').style.display = mode==='signin' ? 'block' : 'none';
+    document.getElementById('auth-signup-form').style.display = mode==='signup' ? 'block' : 'none';
+    const msg = document.getElementById('auth-msg');
+    msg.style.display='none'; msg.textContent='';
+}
+
+function doSignin(e){
+    e.preventDefault();
+    const email = document.getElementById('si-email').value.trim();
+    const pwd = document.getElementById('si-pwd').value;
+    const msg = document.getElementById('auth-msg');
+    const users = TL.getUsers();
+    const user = users.find(u => u.email.toLowerCase()===email.toLowerCase());
+    if(!user || user.password!==hp(pwd)){
+        msg.textContent='Invalid email or password.'; msg.style.display='block'; return;
+    }
+    TL.saveSession({ user_id:user.id, user_name:user.name, is_admin:user.is_admin });
+    showPage(user.is_admin ? 'admin' : 'dashboard');
+}
+
+function doSignup(e){
+    e.preventDefault();
+    const name = document.getElementById('su-name').value.trim();
+    const email = document.getElementById('su-email').value.trim();
+    const pwd = document.getElementById('su-pwd').value;
+    const cpwd = document.getElementById('su-cpwd').value;
+    const msg = document.getElementById('auth-msg');
+    if(pwd!==cpwd){ msg.textContent='Passwords do not match.'; msg.style.display='block'; return; }
+    if(pwd.length<6){ msg.textContent='Password must be at least 6 characters.'; msg.style.display='block'; return; }
+    const users = TL.getUsers();
+    if(users.find(u => u.email.toLowerCase()===email.toLowerCase())){
+        msg.textContent='Email already registered. Please sign in instead.'; msg.style.display='block'; return;
+    }
+    const id = Date.now();
+    users.push({ id, name, email, password:hp(pwd), is_admin:false, created_at:new Date().toISOString() });
+    TL.saveUsers(users);
+    TL.saveSession({ user_id:id, user_name:name, is_admin:false });
+    showPage('dashboard');
+}
+
+function doLogout(){
+    TL.clearSession();
+    showPage('home');
+}
+
+// ============================================================
+// HOME STATS
+// ============================================================
+function updateImpactStats(){
+    const impact = TL.getImpact();
+    const d=document.getElementById('stat-devices');
+    const s=document.getElementById('stat-students');
+    const ew=document.getElementById('stat-ewaste');
+    if(d) d.textContent=impact.devices_processed;
+    if(s) s.textContent=impact.students_helped;
+    if(ew) ew.textContent=impact.ewaste_diverted;
+}
+
+// ============================================================
+// DASHBOARD
+// ============================================================
+function renderDashboard(){
+    const session = TL.getSession();
+    if(!session) return;
+    document.getElementById('dash-username').textContent = 'Welcome, '+session.user_name+'!';
+    const adminLink = document.getElementById('dash-admin-link');
+    if(adminLink) adminLink.style.display = session.is_admin ? 'inline-block' : 'none';
+    const users = TL.getUsers();
+    const user = users.find(u => u.id===session.user_id);
+    if(user){
+        const nameEl=document.getElementById('sub-name');
+        const emailEl=document.getElementById('sub-email');
+        if(nameEl && !nameEl.value) nameEl.value=user.name;
+        if(emailEl && !emailEl.value) emailEl.value=user.email;
+    }
+    buildDeviceGroups(1);
+    renderUserSubmissions(session.user_id);
+}
+
+// ============================================================
+// DEVICE FORM BUILDER
+// ============================================================
+const DEVICE_TYPES = [
+    ['','Select type'],['phone','Phone'],['laptop','Laptop'],['tablet','Tablet'],
+    ['desktop','Desktop Computer'],['monitor','Monitor'],['smartwatch','Smartwatch'],
+    ['earphones','Earphones'],['headphones','Headphones'],['speaker','Speaker'],
+    ['charger','Charger'],['power_bank','Power Bank'],['camera','Camera'],
+    ['lens','Camera Lens'],['drone','Drone'],['gaming_console','Gaming Console'],
+    ['controller','Game Controller'],['printer','Printer'],['router','Router / Modem'],
+    ['storage_device','Storage Device (HDD/SSD/USB)'],['keyboard','Keyboard'],
+    ['mouse','Mouse'],['microphone','Microphone'],['other','Other Device']
+];
+const CONDITIONS = [['','Select condition'],['working','Fully working'],['repair','Needs minor repair'],['dead','Not working']];
+
+function buildDeviceGroups(countRaw){
+    const count = Math.min(5, Math.max(1, parseInt(countRaw)||1));
+    const container = document.getElementById('deviceGroupsContainer');
+    container.innerHTML='';
+    for(let i=1; i<=count; i++){
+        const typeOpts = DEVICE_TYPES.map(([v,l]) => '<option value="'+v+'">'+l+'</option>').join('');
+        const condOpts = CONDITIONS.map(([v,l]) => '<option value="'+v+'">'+l+'</option>').join('');
+        const title = count>1 ? '<div class="device-group-title">Device '+i+'</div>' : '';
+        container.innerHTML += '<div class="device-group">'+title+
+            '<div class="form-group"><label>Device Type</label><select name="dt'+i+'" id="dt'+i+'" required>'+typeOpts+'</select></div>'+
+            '<div class="form-group"><label>Brand &amp; Model</label><input type="text" name="bm'+i+'" id="bm'+i+'" placeholder="e.g. iPhone 11, MacBook Air 2020" required></div>'+
+            '<div class="form-group"><label>Condition</label><select name="cd'+i+'" id="cd'+i+'" required>'+condOpts+'</select></div>'+
+            '<div class="form-group"><label>Upload photos of this device</label><input type="file" name="imgs'+i+'" id="imgs'+i+'" accept="image/*" multiple></div>'+
+            '</div>';
+    }
+}
+
+// ============================================================
+// FORM SUBMIT (async - reads image files)
+// ============================================================
+async function submitDeviceForm(e){
+    e.preventDefault();
+    const session = TL.getSession();
+    if(!session) return;
+    const msgEl = document.getElementById('dash-form-msg');
+    const name = document.getElementById('sub-name').value.trim();
+    const email = document.getElementById('sub-email').value.trim();
+    const phone = document.getElementById('sub-phone').value.trim();
+    const count = Math.min(5, Math.max(1, parseInt(document.getElementById('deviceCount').value)||1));
+    if(!name||!email||!phone){ showDashMsg(msgEl,'Please fill in all required fields.','error'); return; }
+    const subs = TL.getSubs();
+    for(let i=1; i<=count; i++){
+        const dtEl = document.getElementById('dt'+i);
+        const bmEl = document.getElementById('bm'+i);
+        const cdEl = document.getElementById('cd'+i);
+        const imgEl = document.getElementById('imgs'+i);
+        if(!dtEl||!bmEl||!cdEl) continue;
+        const device_type = dtEl.value;
+        const brand_model = bmEl.value.trim();
+        const condition = cdEl.value;
+        if(!device_type||!brand_model||!condition){ showDashMsg(msgEl,'Please fill in all device fields.','error'); return; }
+        let images=[];
+        if(imgEl && imgEl.files.length){
+            for(const file of imgEl.files){
+                try{
+                    const dataURL = await new Promise(res=>{ const r=new FileReader(); r.onload=ev=>res(ev.target.result); r.readAsDataURL(file); });
+                    images.push({ name:file.name, data:dataURL });
+                }catch(err){}
+            }
+        }
+        subs.push({ id:Date.now()+i, user_id:session.user_id, user_name:session.user_name, user_email:email, name, email, phone, device_type, brand_model, condition, images, status:'pending', estimated_price:null, created_at:new Date().toISOString() });
+    }
+    try{ TL.saveSubs(subs); }catch(err){ showDashMsg(msgEl,'Storage full. Try submitting without images.','error'); return; }
+    showDashMsg(msgEl, count+' device'+(count>1?'s':'')+' submitted successfully!','success');
+    document.getElementById('deviceSubmissionForm').reset();
+    buildDeviceGroups(1);
+    renderUserSubmissions(session.user_id);
+    setTimeout(()=>{ msgEl.style.display='none'; }, 4000);
+}
+
+function showDashMsg(el, text, type){
+    el.textContent=text;
+    el.className = type==='success' ? 'success-msg' : 'error-msg';
+    el.style.display='block';
+}
+
+// ============================================================
+// USER SUBMISSIONS
+// ============================================================
+function renderUserSubmissions(userId){
+    const subs = TL.getSubs().filter(s=>s.user_id===userId).sort((a,b)=>new Date(b.created_at)-new Date(a.created_at));
+    const container = document.getElementById('user-submissions-section');
+    if(!subs.length){ container.innerHTML=''; return; }
+    const cards = subs.map(s=>{
+        const date = new Date(s.created_at).toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+        const imgs = s.images&&s.images.length ? '<div class="submission-images"><h4>Uploaded Images</h4><div class="image-thumbnails">'+s.images.map(img=>'<img src="'+img.data+'" alt="'+img.name+'" onclick="showImageModal(this.src)">').join('')+'</div></div>' : '';
+        return '<div class="submission-card"><div class="submission-header"><h3>'+s.device_type+' - '+s.brand_model+'</h3><span class="status-badge status-'+s.status+'">'+s.status+'</span></div><div class="submission-details"><div class="detail-row"><span class="label">Condition:</span><span class="value">'+s.condition+'</span></div><div class="detail-row"><span class="label">Submitted:</span><span class="value">'+date+'</span></div></div>'+imgs+'</div>';
+    }).join('');
+    container.innerHTML='<div class="section"><h1>Your Device Submissions</h1><p style="color:var(--muted);margin-bottom:1.1rem;font-size:.95rem">Track the status of your submitted devices.</p><div class="submissions-list">'+cards+'</div></div>';
+}
+
+function showImageModal(src){ document.getElementById('modalImage').src=src; document.getElementById('imageModal').classList.add('open'); }
+function closeImageModal(){ document.getElementById('imageModal').classList.remove('open'); document.getElementById('modalImage').src=''; }
+
+// ============================================================
+// ADMIN
+// ============================================================
+function renderAdmin(){
+    const session = TL.getSession();
+    if(!session||!session.is_admin) return;
+    document.getElementById('admin-username').textContent = 'Welcome, '+session.user_name+' (Admin)';
+    const subs = TL.getSubs();
+    const impact = TL.getImpact();
+    document.getElementById('admin-total').textContent = subs.length;
+    document.getElementById('admin-pending').textContent = subs.filter(s=>s.status==='pending').length;
+    document.getElementById('admin-approved').textContent = subs.filter(s=>s.status==='approved').length;
+    document.getElementById('imp-devices').value = impact.devices_processed;
+    document.getElementById('imp-students').value = impact.students_helped;
+    document.getElementById('imp-ewaste').value = impact.ewaste_diverted;
+    renderAdminTable(subs);
+}
+
+function renderAdminTable(subs){
+    const sorted = [...subs].sort((a,b)=>new Date(b.created_at)-new Date(a.created_at));
+    if(!sorted.length){
+        document.getElementById('admin-tbody').innerHTML='<tr><td colspan="9" style="text-align:center;color:var(--muted);padding:2rem;">No submissions yet.</td></tr>';
+        return;
+    }
+    document.getElementById('admin-tbody').innerHTML = sorted.map(s=>{
+        const date = new Date(s.created_at).toLocaleDateString('en-US');
+        const imgBtn = s.images&&s.images.length ? '<button class="status-update-btn" onclick="showAdminImages('+s.id+')" style="font-size:.72rem;padding:.3rem .6rem;margin-bottom:.3rem">View Images</button><br>' : '';
+        return '<tr>'+
+            '<td>'+s.id+'</td>'+
+            '<td>'+s.user_name+'<br><small>'+( s.user_email||'')+'</small></td>'+
+            '<td><div class="response-block"><div><strong>Name:</strong> '+s.name+'</div><div><strong>Email:</strong> '+s.email+'</div><div><strong>Phone:</strong> '+s.phone+'</div><div><strong>Device:</strong> '+s.device_type+'</div><div><strong>Brand:</strong> '+s.brand_model+'</div><div><strong>Condition:</strong> '+s.condition+'</div></div></td>'+
+            '<td>'+s.device_type+'<br><small>'+s.brand_model+'</small></td>'+
+            '<td>'+s.condition+'</td>'+
+            '<td><span class="status-badge status-'+s.status+'">'+s.status+'</span></td>'+
+            '<td><div class="status-update-form"><select class="status-select" id="st'+s.id+'"><option value="pending"'+(s.status==='pending'?' selected':'')+'>Pending</option><option value="approved"'+(s.status==='approved'?' selected':'')+'>Approved</option><option value="completed"'+(s.status==='completed'?' selected':'')+'>Completed</option><option value="rejected"'+(s.status==='rejected'?' selected':'')+'>Rejected</option></select><button class="status-update-btn" onclick="updateStatus('+s.id+')">Update</button></div></td>'+
+            '<td>'+date+'</td>'+
+            '<td class="actions-cell">'+imgBtn+'<button class="delete-btn" onclick="deleteSubmission('+s.id+')">Delete</button></td>'+
+            '</tr>';
+    }).join('');
+}
+
+function updateStatus(id){
+    const el = document.getElementById('st'+id);
+    if(!el) return;
+    const subs = TL.getSubs();
+    const sub = subs.find(s=>s.id===id);
+    if(sub){ sub.status=el.value; TL.saveSubs(subs); renderAdmin(); }
+}
+
+function deleteSubmission(id){
+    if(!confirm('Delete this submission permanently?')) return;
+    TL.saveSubs(TL.getSubs().filter(s=>s.id!==id));
+    renderAdmin();
+}
+
+function updateImpact(e){
+    e.preventDefault();
+    TL.saveImpact({
+        devices_processed: Math.max(0,parseInt(document.getElementById('imp-devices').value)||0),
+        students_helped: Math.max(0,parseInt(document.getElementById('imp-students').value)||0),
+        ewaste_diverted: Math.max(0,parseInt(document.getElementById('imp-ewaste').value)||0)
+    });
+    const btn = document.getElementById('imp-save-btn');
+    btn.textContent='Saved!';
+    setTimeout(()=>btn.textContent='Save Stats', 2000);
+    updateImpactStats();
+}
+
+function showAdminImages(id){
+    const sub = TL.getSubs().find(s=>s.id===id);
+    if(!sub||!sub.images||!sub.images.length) return;
+    document.getElementById('adminImageContainer').innerHTML = sub.images.map(img=>'<img src="'+img.data+'" alt="'+img.name+'">').join('');
+    document.getElementById('adminImageModal').classList.add('open');
+}
+function closeAdminModal(){ document.getElementById('adminImageModal').classList.remove('open'); }
+</script>
 </body>
 </html>
