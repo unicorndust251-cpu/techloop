@@ -9,8 +9,6 @@
     <style>
         :root {
             --bg: #0a0a0a;
-            --surface: #111111;
-            --surface-soft: #171717;
             --text: #f5f5f5;
             --muted: #9c9c9c;
             --stroke: #222222;
@@ -19,35 +17,23 @@
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.5;
-            color: var(--text);
-            background: var(--bg);
-            overflow-x: hidden;
-        }
+        body { font-family: 'Inter', sans-serif; line-height: 1.5; color: var(--text); background: var(--bg); overflow-x: hidden; }
         body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            background:
-                radial-gradient(900px 420px at 8% -10%, rgba(137,170,204,0.18), transparent 60%),
-                radial-gradient(1000px 500px at 92% -10%, rgba(78,133,191,0.14), transparent 62%);
-            z-index: -1;
+            content: ""; position: fixed; inset: 0; pointer-events: none; z-index: -1;
+            background: radial-gradient(900px 420px at 8% -10%, rgba(137,170,204,0.18), transparent 60%),
+                        radial-gradient(1000px 500px at 92% -10%, rgba(78,133,191,0.14), transparent 62%);
         }
         .container { width: min(1180px, calc(100% - 36px)); margin: 0 auto; }
         .accent-gradient { background: linear-gradient(90deg, var(--accent-a) 0%, var(--accent-b) 100%); }
-        .eyebrow {
-            display: inline-flex; align-items: center; gap: 0.55rem;
-            font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted);
-        }
+        .eyebrow { display: inline-flex; align-items: center; gap: 0.55rem; font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
         .eyebrow::before { content: ""; width: 30px; height: 1px; background: var(--stroke); }
-        .section-title { font-size: clamp(2rem,5vw,3.1rem); line-height: 1.03; margin: 1.1rem 0 1rem; letter-spacing: -0.03em; }
+        .section-title { font-size: clamp(2rem,5vw,3.1rem); line-height: 1.03; margin: 1.1rem 0 1rem; letter-spacing: -0.03em; color: var(--text); }
         .section-subtitle { color: var(--muted); max-width: 640px; font-size: 1.02rem; }
         .section-head { margin-bottom: 2.35rem; }
         .section-head.center { text-align: center; }
         .section-head.center .eyebrow { justify-content: center; }
+
+        /* NAV */
         header { position: fixed; inset: 0 0 auto 0; z-index: 1100; padding-top: 0.95rem; pointer-events: none; }
         nav {
             pointer-events: auto; width: fit-content; margin: 0 auto;
@@ -60,92 +46,54 @@
         .logo { display: inline-flex; align-items: center; gap: 0.52rem; text-decoration: none; color: var(--text); padding: 0.22rem 0.5rem; border-radius: 999px; }
         .logo-ring { width: 33px; height: 33px; border-radius: 999px; padding: 1.6px; transition: transform 0.22s ease; }
         .logo:hover .logo-ring { transform: scale(1.06); }
-        .logo-core {
-            width: 100%; height: 100%; border-radius: 999px; background: var(--bg);
-            border: 1px solid rgba(255,255,255,0.14); display: flex; align-items: center;
-            justify-content: center; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em;
-        }
+        .logo-core { width: 100%; height: 100%; border-radius: 999px; background: var(--bg); border: 1px solid rgba(255,255,255,0.14); display: flex; align-items: center; justify-content: center; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; }
         .logo-label { font-size: 0.84rem; letter-spacing: 0.02em; color: #e8e8e8; font-weight: 600; }
         .nav-links { list-style: none; display: flex; align-items: center; gap: 0.26rem; }
-        .nav-links a {
-            color: var(--muted); text-decoration: none; font-size: 0.8rem; font-weight: 500;
-            padding: 0.5rem 0.86rem; border-radius: 999px; transition: color 0.2s ease, background 0.2s ease;
-        }
+        .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.8rem; font-weight: 500; padding: 0.5rem 0.86rem; border-radius: 999px; transition: color 0.2s ease, background 0.2s ease; }
         .nav-links a:hover, .nav-links a.active { color: var(--text); background: rgba(255,255,255,0.08); }
-        .cta-link {
-            color: var(--text); text-decoration: none; font-size: 0.8rem; font-weight: 600;
-            padding: 0.5rem 0.86rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.16);
-            transition: border-color 0.22s ease, transform 0.22s ease;
-        }
+        .cta-link { color: var(--text); text-decoration: none; font-size: 0.8rem; font-weight: 600; padding: 0.5rem 0.86rem; border-radius: 999px; border: 1px solid rgba(255,255,255,0.16); transition: border-color 0.22s ease, transform 0.22s ease; cursor: pointer; background: none; }
         .cta-link:hover { border-color: var(--accent-a); transform: translateY(-1px); }
+
+        /* HERO */
         .hero { min-height: 100vh; display: grid; align-items: center; padding: 9.5rem 0 5rem; position: relative; }
-        .hero::after {
-            content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 190px;
-            background: linear-gradient(to bottom, transparent, var(--bg)); pointer-events: none;
-        }
-        .hero-inner {
-            text-align: center; max-width: 780px; margin: 0 auto; position: relative; z-index: 1;
-            animation: fade-up 0.9s ease-out both;
-        }
+        .hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 190px; background: linear-gradient(to bottom, transparent, var(--bg)); pointer-events: none; }
+        .hero-inner { text-align: center; max-width: 780px; margin: 0 auto; position: relative; z-index: 1; animation: fade-up 0.9s ease-out both; }
         .hero h1 { font-size: clamp(2.5rem,7vw,5.4rem); line-height: 0.93; letter-spacing: -0.035em; margin: 1rem 0 1.15rem; }
         .hero p { color: #b1b1b1; font-size: 1.02rem; max-width: 640px; margin: 0 auto 2rem; }
         .hero .cta-buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.8rem; }
-        .btn {
-            display: inline-flex; align-items: center; gap: 0.52rem; padding: 0.78rem 1.36rem;
-            border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 0.9rem;
-            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-        }
+
+        /* BUTTONS */
+        .btn { display: inline-flex; align-items: center; gap: 0.52rem; padding: 0.78rem 1.36rem; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease; cursor: pointer; border: none; font-family: inherit; }
         .btn-primary { color: #0e0e0e; background: #ececec; box-shadow: 0 8px 24px rgba(0,0,0,0.22); }
         .btn-primary:hover { transform: translateY(-2px); }
         .btn-secondary { color: var(--text); border: 1px solid #2f2f2f; background: #111; }
         .btn-secondary:hover { border-color: var(--accent-a); transform: translateY(-2px); }
+
+        /* SECTIONS */
         section { padding: 5.4rem 0; position: relative; }
         .about, .process, .transparency { border-top: 1px solid var(--stroke); }
         .about-lead { max-width: 680px; margin-bottom: 0.35rem; color: #cbcbcb; }
         .about-features { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; margin-top: 1.6rem; }
-        .feature {
-            background: linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02));
-            border: 1px solid var(--stroke); border-radius: 18px; padding: 1.25rem;
-            transition: transform 0.2s ease, border-color 0.2s ease;
-        }
+        .feature { background: linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02)); border: 1px solid var(--stroke); border-radius: 18px; padding: 1.25rem; transition: transform 0.2s ease, border-color 0.2s ease; }
         .feature:hover { transform: translateY(-4px); border-color: #325c83; }
-        .feature-icon {
-            width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center;
-            justify-content: center; color: #ebf3fb; font-size: 1.35rem; margin-bottom: 0.8rem;
-            border: 1px solid #2a4055; background: linear-gradient(140deg,rgba(137,170,204,0.25),rgba(78,133,191,0.14));
-        }
+        .feature-icon { width: 52px; height: 52px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #ebf3fb; font-size: 1.35rem; margin-bottom: 0.8rem; border: 1px solid #2a4055; background: linear-gradient(140deg,rgba(137,170,204,0.25),rgba(78,133,191,0.14)); }
         .feature strong { display: block; font-size: 1rem; margin-bottom: 0.35rem; }
         .feature p { color: var(--muted); font-size: 0.93rem; }
         .submission { border-top: 1px solid var(--stroke); }
-        .submit-panel {
-            border: 1px solid var(--stroke); border-radius: 22px; padding: 2rem; text-align: center;
-            background: linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.015));
-        }
+        .submit-panel { border: 1px solid var(--stroke); border-radius: 22px; padding: 2rem; text-align: center; background: linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.015)); }
         .submit-panel p { color: var(--muted); max-width: 540px; margin: 0 auto 1.6rem; }
         .process-steps { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; }
         .step { border: 1px solid var(--stroke); border-radius: 20px; padding: 1.35rem; background: #121212; min-height: 220px; }
-        .step-number {
-            width: 42px; height: 42px; border-radius: 999px; display: flex; align-items: center;
-            justify-content: center; margin-bottom: 0.8rem; font-weight: 700; font-size: 1.06rem;
-            color: #dcecf9; border: 1px solid #2a4055;
-            background: linear-gradient(140deg,rgba(137,170,204,0.22),rgba(78,133,191,0.12));
-        }
+        .step-number { width: 42px; height: 42px; border-radius: 999px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.8rem; font-weight: 700; font-size: 1.06rem; color: #dcecf9; border: 1px solid #2a4055; background: linear-gradient(140deg,rgba(137,170,204,0.22),rgba(78,133,191,0.12)); }
         .step h3 { font-size: 1.08rem; margin-bottom: 0.55rem; }
         .step p { color: var(--muted); font-size: 0.94rem; }
         .impact { border-top: 1px solid var(--stroke); border-bottom: 1px solid var(--stroke); }
         .impact-stats { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; }
-        .stat {
-            border-radius: 20px; border: 1px solid #1e2a34;
-            background: linear-gradient(180deg,rgba(137,170,204,0.12),rgba(78,133,191,0.04));
-            padding: 1.5rem 1rem; text-align: center;
-        }
+        .stat { border-radius: 20px; border: 1px solid #1e2a34; background: linear-gradient(180deg,rgba(137,170,204,0.12),rgba(78,133,191,0.04)); padding: 1.5rem 1rem; text-align: center; }
         .stat-number { display: block; font-size: clamp(2rem,5vw,2.8rem); font-weight: 700; line-height: 1; margin-bottom: 0.4rem; }
         .stat-label { color: #c7d7e6; font-size: 0.92rem; letter-spacing: 0.05em; text-transform: uppercase; }
         .funds-breakdown { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; }
-        .fund-item {
-            border: 1px solid var(--stroke); border-radius: 16px; background: #121212;
-            display: flex; gap: 0.8rem; align-items: flex-start; padding: 1rem;
-        }
+        .fund-item { border: 1px solid var(--stroke); border-radius: 16px; background: #121212; display: flex; gap: 0.8rem; align-items: flex-start; padding: 1rem; }
         .fund-item i { color: #b9d3ea; margin-top: 0.14rem; }
         .fund-item strong { display: block; margin-bottom: 0.3rem; }
         .fund-item p { color: var(--muted); font-size: 0.9rem; }
@@ -158,7 +106,46 @@
         .links-panel a { color: #d7e6f4; text-decoration: none; transition: color 0.2s ease; }
         .links-panel a:hover { color: #ffffff; }
         footer { padding: 1.1rem 0 1.9rem; text-align: center; color: var(--muted); font-size: 0.86rem; }
+
         @keyframes fade-up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* MODAL OVERLAY */
+        .modal-overlay {
+            display: none; position: fixed; inset: 0; z-index: 2000;
+            background: rgba(0,0,0,0.72); backdrop-filter: blur(6px);
+            align-items: center; justify-content: center; padding: 1.2rem;
+        }
+        .modal-overlay.active { display: flex; }
+        .auth-shell {
+            width: min(460px, 100%); border: 1px solid var(--stroke); border-radius: 22px;
+            background: linear-gradient(180deg,rgba(20,20,20,0.98),rgba(15,15,15,0.99));
+            padding: 2rem; box-shadow: 0 22px 44px rgba(0,0,0,0.5);
+            position: relative; animation: fade-up 0.25s ease both;
+        }
+        .modal-close {
+            position: absolute; top: 1rem; right: 1rem; background: none; border: none;
+            color: var(--muted); font-size: 1.1rem; cursor: pointer; line-height: 1;
+            transition: color 0.2s ease;
+        }
+        .modal-close:hover { color: var(--text); }
+        .auth-logo { width: fit-content; margin: 0 auto 1.4rem; display: flex; align-items: center; gap: 0.5rem; color: var(--text); font-weight: 700; letter-spacing: 0.02em; }
+        .auth-logo-ring { width: 34px; height: 34px; border-radius: 999px; background: linear-gradient(90deg,var(--accent-a),var(--accent-b)); padding: 1.6px; }
+        .auth-logo-core { width: 100%; height: 100%; border-radius: 999px; background: var(--bg); border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-size: 0.68rem; font-weight: 700; }
+        .auth-shell h1 { text-align: center; font-size: clamp(1.7rem,4vw,2.1rem); margin-bottom: 0.35rem; letter-spacing: -0.02em; }
+        .auth-subtitle { text-align: center; color: var(--muted); font-size: 0.95rem; margin-bottom: 1.6rem; }
+        .auth-msg { border: 1px solid rgba(220,53,69,0.45); background: rgba(220,53,69,0.12); color: #f4bec4; padding: 0.82rem 0.92rem; border-radius: 11px; margin-bottom: 1rem; font-size: 0.9rem; display: none; }
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; margin-bottom: 0.4rem; color: #d9d9d9; font-weight: 500; font-size: 0.9rem; }
+        .form-group input { width: 100%; padding: 0.82rem 0.95rem; border-radius: 11px; border: 1px solid var(--stroke); background: #101010; color: var(--text); font-size: 0.95rem; font-family: inherit; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+        .form-group input:focus { outline: none; border-color: #2f567a; box-shadow: 0 0 0 3px rgba(78,133,191,0.16); }
+        .auth-btn { width: 100%; border: none; border-radius: 999px; padding: 0.82rem 1rem; margin-top: 0.3rem; font-weight: 600; font-size: 0.94rem; color: #0e0e0e; background: #ededed; cursor: pointer; transition: transform 0.2s ease; font-family: inherit; }
+        .auth-btn:hover { transform: translateY(-2px); }
+        .link-section { text-align: center; margin-top: 1.25rem; color: var(--muted); font-size: 0.9rem; }
+        .link-section button { background: none; border: none; color: #d7e6f4; font-weight: 600; cursor: pointer; font-size: 0.9rem; padding: 0; font-family: inherit; }
+        .link-section button:hover { text-decoration: underline; }
+        .server-notice { text-align: center; margin-top: 1rem; font-size: 0.82rem; color: #555; }
+
+        /* RESPONSIVE */
         @media (max-width: 1100px) {
             .about-features, .process-steps, .impact-stats, .funds-breakdown { grid-template-columns: repeat(2,minmax(0,1fr)); }
             .fund-item:last-child { grid-column: 1 / -1; }
@@ -178,6 +165,74 @@
     </style>
 </head>
 <body>
+
+    <!-- SIGN IN MODAL -->
+    <div class="modal-overlay" id="signinModal">
+        <div class="auth-shell">
+            <button class="modal-close" onclick="closeModal('signinModal')"><i class="fas fa-times"></i></button>
+            <div class="auth-logo">
+                <span class="auth-logo-ring"><span class="auth-logo-core">TL</span></span>
+                <span>Tech Loop</span>
+            </div>
+            <h1>Sign In</h1>
+            <p class="auth-subtitle">Welcome back. Continue your donation journey.</p>
+            <div class="auth-msg" id="signinMsg"></div>
+            <form action="http://localhost:5000/signin" method="POST">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="password" required>
+                </div>
+                <button type="submit" class="auth-btn">Sign In</button>
+            </form>
+            <div class="link-section">
+                Don't have an account? <button onclick="switchModal('signinModal','signupModal')">Create one here</button>
+            </div>
+            <p class="server-notice">Requires the Tech Loop server to be running.</p>
+        </div>
+    </div>
+
+    <!-- SIGN UP MODAL -->
+    <div class="modal-overlay" id="signupModal">
+        <div class="auth-shell">
+            <button class="modal-close" onclick="closeModal('signupModal')"><i class="fas fa-times"></i></button>
+            <div class="auth-logo">
+                <span class="auth-logo-ring"><span class="auth-logo-core">TL</span></span>
+                <span>Tech Loop</span>
+            </div>
+            <h1>Create Account</h1>
+            <p class="auth-subtitle">Join Tech Loop and start donating your devices.</p>
+            <div class="auth-msg" id="signupMsg"></div>
+            <form action="http://localhost:5000/signup" method="POST">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="password" required minlength="6">
+                </div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" name="confirm_password" required minlength="6">
+                </div>
+                <button type="submit" class="auth-btn">Create Account</button>
+            </form>
+            <div class="link-section">
+                Already have an account? <button onclick="switchModal('signupModal','signinModal')">Sign In</button>
+            </div>
+            <p class="server-notice">Requires the Tech Loop server to be running.</p>
+        </div>
+    </div>
+
+    <!-- MAIN PAGE -->
     <header>
         <nav id="mainNav">
             <a class="logo" href="#home">
@@ -191,7 +246,7 @@
                 <li><a href="#impact">Impact</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <a href="#submit" class="cta-link">Join Us</a>
+            <button class="cta-link" onclick="openModal('signupModal')">Join Us</button>
         </nav>
     </header>
 
@@ -200,8 +255,8 @@
             <h1>Turn Your Old Devices Into Opportunity</h1>
             <p>Donate your used phones, laptops, and tablets. We refurbish them and get them into the hands of students who need them most while keeping e-waste out of landfills.</p>
             <div class="cta-buttons">
-                <a href="#submit" class="btn btn-primary"><i class="fas fa-heart"></i> Donate Your Device</a>
-                <a href="#contact" class="btn btn-secondary"><i class="fas fa-envelope"></i> Get In Touch</a>
+                <button class="btn btn-primary" onclick="openModal('signupModal')"><i class="fas fa-heart"></i> Donate Your Device</button>
+                <button class="btn btn-secondary" onclick="openModal('signinModal')"><i class="fas fa-right-to-bracket"></i> Sign In</button>
             </div>
         </div>
     </section>
@@ -239,8 +294,8 @@
                 <span class="eyebrow">Start Today</span>
                 <h2 class="section-title">Ready to Donate?</h2>
                 <p>Create an account to submit your device details and start your donation journey with Tech Loop.</p>
-                <a href="/signup" class="btn btn-primary"><i class="fas fa-user-plus"></i> Create Your Account</a>
-                <p style="margin-top:1rem;">Already have an account? <a href="/signin" style="color:#d7e6f4;font-weight:600;">Sign in here</a>.</p>
+                <button class="btn btn-primary" onclick="openModal('signupModal')"><i class="fas fa-user-plus"></i> Create Your Account</button>
+                <p style="margin-top:1rem;">Already have an account? <button onclick="openModal('signinModal')" style="background:none;border:none;color:#d7e6f4;font-weight:600;cursor:pointer;font-size:inherit;font-family:inherit;">Sign in here</button>.</p>
             </div>
         </div>
     </section>
@@ -346,21 +401,51 @@
     </footer>
 
     <script>
+        // Nav scroll + active link
         const nav = document.getElementById('mainNav');
         const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
-        const observedSections = document.querySelectorAll('section[id]');
-        window.addEventListener('scroll', function () {
-            if (!nav) return;
-            nav.classList.toggle('scrolled', window.scrollY > 80);
-        });
+        window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 80));
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (!entry.isIntersecting) return;
-                const id = entry.target.getAttribute('id');
-                navLinks.forEach((link) => link.classList.toggle('active', link.getAttribute('href') === '#' + id));
+            entries.forEach(e => {
+                if (!e.isIntersecting) return;
+                const id = e.target.getAttribute('id');
+                navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
             });
-        }, { root: null, threshold: 0.45 });
-        observedSections.forEach((s) => observer.observe(s));
+        }, { threshold: 0.45 });
+        document.querySelectorAll('section[id]').forEach(s => observer.observe(s));
+
+        // Modal controls
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        function switchModal(from, to) {
+            closeModal(from);
+            openModal(to);
+        }
+        // Close on backdrop click
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', e => {
+                if (e.target === overlay) closeModal(overlay.id);
+            });
+        });
+        // Close on Escape key
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.active').forEach(m => closeModal(m.id));
+        });
+
+        // Live stats from server if running
+        fetch('http://localhost:5000/api/stats')
+            .then(r => r.json())
+            .then(d => {
+                if (d.devices_processed !== undefined) document.getElementById('stat-devices').textContent = d.devices_processed;
+                if (d.students_helped !== undefined) document.getElementById('stat-students').textContent = d.students_helped;
+                if (d.ewaste_diverted !== undefined) document.getElementById('stat-ewaste').textContent = d.ewaste_diverted;
+            }).catch(() => {});
     </script>
 </body>
 </html>
